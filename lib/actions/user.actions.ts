@@ -40,3 +40,13 @@ export async function updateUser({ userId, username, name, bio, image, path }: P
     }
 
 }
+
+export async function fetchUser(userId : string){
+    try {
+        connectToDB();
+
+        return await User.findOne({id : userId})
+    } catch (error : any) {
+        throw new Error(`Failed to ferch user: ${error.message}`)
+    }
+}
