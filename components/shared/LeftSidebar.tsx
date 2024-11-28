@@ -6,11 +6,12 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { SignedIn, SignOutButton, useAuth } from '@clerk/nextjs';
 
-const LeftSidebar = () => {
+const LeftSidebar =() => {
     const router = useRouter();
     const pathname = usePathname();
     const auth = useAuth();
     
+    if(!auth.isLoaded)return null;
 
     return (
         <section className='custom-scrollbar leftsidebar'>
